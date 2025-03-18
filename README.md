@@ -1,2 +1,2 @@
-# VillagerStocker
-Minecraft 1.7.10 Mod
+# Eggst
+Minecraft 1.7.10 Mod.
