@@ -1,0 +1,16 @@
+[
+{
+  "modid": "Eggs Lay Eggs",
+  "name": "Eggs Lay Eggs",
+  "description": "",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["¡ı ∞“∂","PickLeaf"],
+  "credits": "",
+  "logoFile": "logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
