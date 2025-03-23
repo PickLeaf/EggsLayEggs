@@ -10,6 +10,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.block.Block;
 
 public final class BlockEggst extends BlockContainer {
 
@@ -46,7 +48,8 @@ public final class BlockEggst extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_,
+            float p_149727_7_, float p_149727_8_, float p_149727_9_) {
         if (world.isRemote) {
             return true;
         } else {
@@ -56,6 +59,21 @@ public final class BlockEggst extends BlockContainer {
             }
             return true;
         }
+    }
+
+    @Override
+    public void breakBlock(World world, int x, int y, int z, Block p_149749_5_, int p_149749_6_) {
+        TileEntityEggst eggst = (TileEntityEggst) world.getTileEntity(x, y, z);
+        for (int i = 0; i < eggst.getSizeInventory(); i++) {
+            if (eggst.getStackInSlot(i) == null)
+                continue;
+            else {
+                EntityItem entityItem = new EntityItem(world, x+0.5, y+0.5, z+0.5,
+                        eggst.getStackInSlot(i));
+                world.spawnEntityInWorld(entityItem);
+            }
+        }
+        world.removeTileEntity(x, y, z);
     }
 
     @Override

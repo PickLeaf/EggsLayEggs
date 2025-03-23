@@ -33,8 +33,9 @@ public class TileEntityEggst extends TileEntity implements IInventory {
     @Override
     public void updateEntity() {
         int chance = 0;
-        for (int i = 0; i < 9; i++) {
-            if (inventory[i] == null) continue;
+        for (int i = 0; i < this.getSizeInventory(); i++) {
+            if (inventory[i] == null)
+                continue;
             if (inventory[i].getItem() != Items.egg) {
                 if (lay(inventory[i])) {
                     inventory[i] = null;
@@ -122,7 +123,8 @@ public class TileEntityEggst extends TileEntity implements IInventory {
     @Override
     public boolean isUseableByPlayer(EntityPlayer player) {
         return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) == this
-                && player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
+                && player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
+                        (double) this.zCoord + 0.5D) <= 64.0D;
     }
 
     @Override
